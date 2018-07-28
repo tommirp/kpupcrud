@@ -1,0 +1,147 @@
+{% extends "./layout.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top:7%;">
+    <div class="row">
+        <div class="col-md-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="detaildata" data-toggle="tab" href="#data" role="tab" aria-controls="home" aria-selected="true">Detail Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="stachart" data-toggle="tab" href="#sta" role="tab" aria-controls="profile" aria-selected="false">Ilustrasi STA</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent" style="border: 1px solid #dee2e6;">
+                    <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="detaildata">
+                        <div class="row" style="padding-top:5%;">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <form action="/?do=edit&id={{ data.id }}" method="post">
+                                    <h4>Detail data proyek :</h4>
+                                    <br><label for="username">nama ruas jalan</label>
+                                    <input type="text" id="nama_ruas_jalan" class="form-control" placeholder="nama ruas jalan" name="nama_ruas_jalan" value="{{ data.nama_ruas_jalan }}">
+                                    
+                                    <br><label for="username">kabupaten kota</label>
+                                    <input type="text" id="kabupaten_kota" class="form-control" placeholder="kabupaten kota" name="kabupaten_kota" value="{{ data.kabupaten_kota }}">
+
+                                    <br><label for="username">tp pangkal</label>
+                                    <input type="text" id="tp_pangkal" class="form-control" placeholder="tp pangkal" name="tp_pangkal" value="{{ data.tp_pangkal }}">
+                                    
+                                    <br><label for="username">tp akhir</label>
+                                    <input type="text" id="tp_akhir" class="form-control" placeholder="tp akhir" name="tp_akhir" value="{{ data.tp_akhir }}">
+                                    
+                                    <br><label for="username">panjang ruas</label>
+                                    <input type="text" id="panjang_ruas" class="form-control" placeholder="panjang ruas" name="panjang_ruas" value="{{ data.panjang_ruas }}">
+                                    
+                                    <br><label for="username">tahun penanganan</label>
+                                    <input type="text" id="tahun_penanganan" class="form-control" placeholder="tahun penanganan" name="tahun_penanganan" value="{{ data.tahun_penanganan }}">
+                                    
+                                    <br><label for="username">perusahaan pelaksana</label>
+                                    <input type="text" id="perusahaan_pelaksana" class="form-control" placeholder="perusahaan pelaksana" name="perusahaan_pelaksana" value="{{ data.perusahaan_pelaksana }}">
+                                    
+                                    <br><label for="username">perusahaan pengawas</label>
+                                    <input type="text" id="perusahaan_pengawas" class="form-control" placeholder="perusahaan pengawas" name="perusahaan_pengawas" value="{{ data.perusahaan_pengawas }}">
+                                    
+                                    <br><label for="username">tanggal spmk</label>
+                                    <input type="text" id="tanggal_spmk" class="form-control" placeholder="tanggal spmk" name="tanggal_spmk" value="{{ data.tanggal_spmk }}">
+                                    
+                                    <br><label for="username">nomor kontrak</label>
+                                    <input type="text" id="nomor_kontrak" class="form-control" placeholder="nomor kontrak" name="nomor_kontrak" value="{{ data.nomor_kontrak }}">
+                                    
+                                    <br><label for="username">tanggal kontrak</label>
+                                    <input type="text" id="tanggal_kontrak" class="form-control" placeholder="tanggal kontrak" name="tanggal_kontrak" value="{{ data.tanggal_kontrak }}">
+                                    
+                                    <br><label for="username">nilai kontrak</label>
+                                    <input type="text" id="nilai_kontrak" class="form-control" placeholder="nilai kontrak" name="nilai_kontrak" value="{{ data.nilai_kontrak }}">
+                                    
+                                    <br><label for="username">tanggal adendum</label>
+                                    <input type="text" id="tanggal_adendum" class="form-control" placeholder="tanggal adendum" name="tanggal_adendum" value="{{ data.tanggal_adendum }}">
+                                    
+                                    <br><label for="username">nilai adendum</label>
+                                    <input type="text" id="nilai_adendum" class="form-control" placeholder="nilai adendum" name="nilai_adendum" value="{{ data.nilai_adendum }}">
+                                    
+                                    <br><label for="username">tanggal pho</label>
+                                    <input type="text" id="tanggal_pho" class="form-control" placeholder="tanggal pho" name="tanggal_pho" value="{{ data.tanggal_pho }}">
+                                    
+                                    <br><label for="username">tanggal fho</label>
+                                    <input type="text" id="tanggal_fho" class="form-control" placeholder="tanggal fho" name="tanggal_fho" value="{{ data.tanggal_fho }}">
+
+                                    <br><button type="submit" class="btn btn-secondary">Simpan</button><br><br><br>
+                                </form>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="sta" role="tabpanel" aria-labelledby="stachart">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br><br><center><div id="chartContainer" style="height: 200px !important;width: 90% !important;"></div></center><br><br><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</div><!-- Main Wrapper -->
+{% endblock %}
+
+{% block scripts %}
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js" type="text/javascript"></script>
+<script>
+    $('#refreshContent').on('click', function(e) {
+        var container = document.getElementById("chartContainer");
+        var content = container.innerHTML;
+        container.innerHTML= content; 
+    });
+
+    window.onload = function () {
+    var listSta = '{{ sta | safe }}';
+    var pjg_ruas = '{{ data.panjang_ruas }}';    
+    listSta = JSON.parse(listSta);
+    var staShow = [{ x: 0, y: 1 },{ x: parseInt(pjg_ruas)/100, y: 1 }];
+    listSta.forEach( function(sta) {
+        let vals = sta.last-sta.first;
+        staShow.push({ x: vals, y: 1, indexLabel: sta.first_show+' - '+sta.last_show,markerColor: "red", markerType: "circle" })
+    });    
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "light2",
+    axisY:{
+        includeZero: false,
+        title: "",
+        tickLength: 0,
+        lineThickness:0,
+        margin:0,
+        valueFormatString:" " //comment this to show numeric values
+    },
+    axisX:{
+        includeZero: false,
+        title: "",
+        tickLength: 0,
+        margin:0,
+        lineThickness:0,
+        valueFormatString:" " //comment this to show numeric values
+    },
+    toolTip:{
+    enabled: true
+    },
+    height: 400,
+    data: [{    
+        indexLabelOrientation: "vertical",    
+        indexLabelFontSize: 16,
+        type: "line",          
+        markerSize: 5,
+        dataPoints: staShow
+    }]
+    });
+    chart.render();
+
+    }
+</script>
+{% endblock %}

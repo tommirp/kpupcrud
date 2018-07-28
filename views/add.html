@@ -1,0 +1,68 @@
+{% extends "./layout.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top:7%;">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/?do=add" method="post">
+              <h4>Detail data proyek :</h4>
+              <br><label for="username">nama ruas jalan</label>
+              <input type="text" id="nama_ruas_jalan" class="form-control" placeholder="nama ruas jalan" name="nama_ruas_jalan" value="{{ data.nama_ruas_jalan }}">
+              
+              <br><label for="username">kabupaten kota</label>
+              <input type="text" id="kabupaten_kota" class="form-control" placeholder="kabupaten kota" name="kabupaten_kota" value="{{ data.kabupaten_kota }}">
+
+              <br><label for="username">tp pangkal</label>
+              <input type="text" id="tp_pangkal" class="form-control" placeholder="tp pangkal" name="tp_pangkal" value="{{ data.tp_pangkal }}">
+              
+              <br><label for="username">tp akhir</label>
+              <input type="text" id="tp_akhir" class="form-control" placeholder="tp akhir" name="tp_akhir" value="{{ data.tp_akhir }}">
+              
+              <br><label for="username">panjang ruas</label>
+              <input type="text" id="panjang_ruas" class="form-control" placeholder="panjang ruas" name="panjang_ruas" value="{{ data.panjang_ruas }}">
+              
+              <br><label for="username">tahun penanganan</label>
+              <input type="text" id="tahun_penanganan" class="form-control" placeholder="tahun penanganan" name="tahun_penanganan" value="{{ data.tahun_penanganan }}">
+              
+              <br><label for="username">perusahaan pelaksana</label>
+              <input type="text" id="perusahaan_pelaksana" class="form-control" placeholder="perusahaan pelaksana" name="perusahaan_pelaksana" value="{{ data.perusahaan_pelaksana }}">
+              
+              <br><label for="username">perusahaan pengawas</label>
+              <input type="text" id="perusahaan_pengawas" class="form-control" placeholder="perusahaan pengawas" name="perusahaan_pengawas" value="{{ data.perusahaan_pengawas }}">
+              
+              <br><label for="username">tanggal spmk</label>
+              <input type="text" id="tanggal_spmk" class="form-control" placeholder="tanggal spmk" name="tanggal_spmk" value="{{ data.tanggal_spmk }}">
+              
+              <br><label for="username">nomor kontrak</label>
+              <input type="text" id="nomor_kontrak" class="form-control" placeholder="nomor kontrak" name="nomor_kontrak" value="{{ data.nomor_kontrak }}">
+              
+              <br><label for="username">tanggal kontrak</label>
+              <input type="text" id="tanggal_kontrak" class="form-control" placeholder="tanggal kontrak" name="tanggal_kontrak" value="{{ data.tanggal_kontrak }}">
+              
+              <br><label for="username">nilai kontrak</label>
+              <input type="text" id="nilai_kontrak" class="form-control" placeholder="nilai kontrak" name="nilai_kontrak" value="{{ data.nilai_kontrak }}">
+              
+              <br><label for="username">tanggal adendum</label>
+              <input type="text" id="tanggal_adendum" class="form-control" placeholder="tanggal adendum" name="tanggal_adendum" value="{{ data.tanggal_adendum }}">
+              
+              <br><label for="username">nilai adendum</label>
+              <input type="text" id="nilai_adendum" class="form-control" placeholder="nilai adendum" name="nilai_adendum" value="{{ data.nilai_adendum }}">
+              
+              <br><label for="username">tanggal pho</label>
+              <input type="text" id="tanggal_pho" class="form-control" placeholder="tanggal pho" name="tanggal_pho" value="{{ data.tanggal_pho }}">
+              
+              <br><label for="username">tanggal fho</label>
+              <input type="text" id="tanggal_fho" class="form-control" placeholder="tanggal fho" name="tanggal_fho" value="{{ data.tanggal_fho }}">
+
+              <br><button type="submit" class="btn btn-secondary">Simpan</button><br><br><br>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
