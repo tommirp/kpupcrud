@@ -51,7 +51,7 @@ app.use((req, res) => {
 });
 app.use((err, req, res) => {
   res.status(err.status || 500);
-  console.log(err);
+//   console.log(err);
   res.redirect('/');
 });
 

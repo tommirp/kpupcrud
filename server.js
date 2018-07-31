@@ -43,5 +43,6 @@ function onListening() {
   let bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-
-console.log("Server running on port "+port+"!");
+console.log("\n\n\nServer berhasil dijalankan!\nSilahkan buka http://localhost:"+port+" di browser!");
+console.log("\nALERT : Ini adalah website versi prototype\ndan dalam penggunaan terbatas (Sebatas uji coba).\nJangan gunakan untuk production / live!!!");
+console.log("\nNOTE : Tekan Ctrl+C Untuk Menghentikan Aplikasi");

@@ -14,8 +14,11 @@
                     <li class="nav-item">
                         <a class="nav-link" id="stachart" data-toggle="tab" href="#sta" role="tab" aria-controls="profile" aria-selected="false">Ilustrasi STA</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="stadata" data-toggle="tab" href="#stadataclick" role="tab" aria-controls="sta" aria-selected="false">Data STA</a>
+                    </li>
                 </ul>
-                <div class="tab-content" id="myTabContent" style="border: 1px solid #dee2e6;">
+                <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="detaildata">
                         <div class="row" style="padding-top:5%;">
                             <div class="col-md-2"></div>
@@ -79,7 +82,40 @@
                     <div class="tab-pane fade" id="sta" role="tabpanel" aria-labelledby="stachart">
                         <div class="row">
                             <div class="col-md-12">
-                                <br><br><center><div id="chartContainer" style="height: 200px !important;width: 90% !important;"></div></center><br><br><br><br>
+                                <div id="chartContainer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="stadataclick" role="tabpanel" aria-labelledby="stadata">
+                        <div class="row">
+                            <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <br>
+                                        <a href="/?do=addsta&id={{ data.id }}" class="btn btn-sm btn-secondary">Tambah Data STA</a>
+                                        <br><br>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>STA 1</th>
+                                                    <th>STA 2</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for sta in staData %}
+                                                    <tr>
+                                                        <td>{{ sta.first_show }}</td>
+                                                        <td>{{ sta.last_show }}</td>
+                                                        <td>
+                                                            <a href="/?do=deletesta&id={{ sta.id }}" class="btn btn-sm btn-danger">Hapus</a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -103,16 +139,18 @@
     var listSta = '{{ sta | safe }}';
     var pjg_ruas = '{{ data.panjang_ruas }}';    
     listSta = JSON.parse(listSta);
-    var staShow = [{ x: 0, y: 1 },{ x: parseInt(pjg_ruas)/100, y: 1 }];
+    var staShow = [{ x: 0, y: 1 },{ x: parseFloat(pjg_ruas), y: 1 }];
     listSta.forEach( function(sta) {
-        let vals = sta.last-sta.first;
+        let vals = (parseFloat(sta.last)+parseFloat(sta.first))/2;
         staShow.push({ x: vals, y: 1, indexLabel: sta.first_show+' - '+sta.last_show,markerColor: "red", markerType: "circle" })
-    });    
+    });
+    console.log(staShow);
     
     var chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     theme: "light2",
     axisY:{
+        gridThickness: 0,
         includeZero: false,
         title: "",
         tickLength: 0,

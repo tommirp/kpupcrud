@@ -1,0 +1,35 @@
+{% extends "./layout.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top:7%;">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/?do=addsta&id={{ id }}" method="post">
+              <h4>Detail data proyek : (Gunakan titik sebagai koma)</h4>
+              
+              <input type="hidden" name="data_ref" value="{{ id }}">
+              
+              <br><label for="first_show">STA 1</label>
+              <input required type="text" id="first_show" class="form-control" placeholder="Contoh : 18+40.5" name="first_show">
+              
+              <br><label for="first">Nilai Desimal STA 1</label>
+              <input required type="text" id="first" class="form-control" placeholder="Contoh : 18.4" name="first">
+              
+              <br><label for="last_show">STA 2</label>
+              <input required type="text" id="last_show" class="form-control" placeholder="Contoh : 18+25.5" name="last_show">
+
+              <br><label for="last">Nilai Desimal STA 2</label>
+              <input required type="text" id="last" class="form-control" placeholder="Contoh : 18.25" name="last">
+              
+              <br><button type="submit" class="btn btn-secondary">Simpan</button> <a href="/?do=detail&id={{ id }}" class="btn btn-warning">Batalkan</a><br><br><br>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

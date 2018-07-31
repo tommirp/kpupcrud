@@ -1,13 +1,38 @@
 {% extends "./layout.html" %}
 
 {% block css %}
+<style>
+    .input-search {
+        padding: 7px 5px 7px 15px;
+        outline: 0;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 1px solid #6c757d;
+        border-radius: 5px;
+        width: 35%;
+    }
+    .btn-search {
+        padding: 5px;
+        border: 1px solid #6c757d;
+        background-color: #6c757d;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 <div class="container" style="padding-top:7%;">
     <div class="row">
         <div class="col-lg-12 col-md-12">
-            <h3>Data Proyek <a class="btn btn-sm btn-secondary" href="/?do=add">Tambah Data</a></h3>
+            <h3>Data Proyek <a class="btn btn-sm btn-secondary" href="/?do=add">Tambah Data</a> 
+                <a href="/" class="btn btn-sm btn-secondary">LIHAT SEMUA DATA</a></h3>
+            <form action="/">
+                <input type="text" class="input-search" placeholder="Nama Kabupaten / Kota" name="kabupaten_kota" required>
+                <input type="text" class="input-search" placeholder="Tahun Penanganan" name="tahun_penanganan" required>
+                <button type="submit" class="btn-search">CARI</button>
+            </form>
             <div class="table-responsive">
                 <table class="table table-hover table-bordered">
                     <thead>
